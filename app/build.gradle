@@ -1,65 +1,40 @@
-apply plugin: 'com.android.application'
-
-Properties props = new Properties()
-props.load(new FileInputStream(file("configuration.properties")))
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.hotbitmapgg.ohmybilibili"
-        minSdkVersion 21
-        targetSdkVersion 25
-        versionCode props["versionCode"] as int
-        versionName props['versionName']
+        minSdkVersion 29
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            zipAlignEnabled true
-            shrinkResources false
-            buildConfigField("boolean", "LOG_DEBUG", "false")
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            zipAlignEnabled true
-            shrinkResources false
-            buildConfigField("boolean", "LOG_DEBUG", "true")
-            debuggable true
-            jniDebuggable true
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    dexOptions {
-        javaMaxHeapSize "4g"
-    }
-
-    lintOptions {
-        abortOnError false
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
-repositories {
-    jcenter()
-    google()
-    maven { url "https://jitpack.io" }
-    mavenCentral()
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:27.1.1'
+    //noinspection GradleCompatible
     implementation 'com.android.support:cardview-v7:27.1.1'
+    //noinspection GradleCompatible
     implementation 'com.android.support:design:27.1.1'
     implementation 'org.jsoup:jsoup:1.8.3'
     implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
@@ -94,10 +69,4 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-}
-
-repositories {
-    flatDir {
-        dirs 'libs' //this way we can find the .aar file in libs folder
-    }
 }
