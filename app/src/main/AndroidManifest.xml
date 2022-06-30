@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.hotbitmapgg.ohmybilibili"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:tools="http://schemas.android.com/tools" package="com.hotbitmapgg.ohmybilibili"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <supports-screens
@@ -19,12 +19,15 @@
 
 
     <application
-        android:name="com.hotbitmapgg.bilibili.BilibiliApp"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+            android:name="com.hotbitmapgg.bilibili.BilibiliApp"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:usesCleartextTraffic="true"
+            android:debuggable="true"
+            tools:ignore="HardcodedDebugMode"
+            android:theme="@style/AppTheme">
         <activity
             android:name="com.hotbitmapgg.bilibili.module.common.SplashActivity"
             android:theme="@style/ColorTranslucentTheme">
