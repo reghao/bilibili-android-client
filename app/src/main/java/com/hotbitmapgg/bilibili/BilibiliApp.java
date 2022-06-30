@@ -19,7 +19,7 @@ public class BilibiliApp extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        init();
+        //init();
     }
 
     private void init() {
