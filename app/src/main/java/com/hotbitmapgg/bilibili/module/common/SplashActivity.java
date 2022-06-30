@@ -44,12 +44,13 @@ public class SplashActivity extends RxActivity {
 
 
     private void finishTask() {
-        boolean isLogin = PreferenceUtil.getBoolean(ConstantUtil.KEY, false);
+        /*boolean isLogin = PreferenceUtil.getBoolean(ConstantUtil.KEY, false);
         if (isLogin) {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
         } else {
             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-        }
+        }*/
+        startActivity(new Intent(SplashActivity.this, MainActivity.class));
         SplashActivity.this.finish();
     }
 
