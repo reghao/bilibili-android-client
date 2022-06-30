@@ -11,6 +11,7 @@ import com.hotbitmapgg.bilibili.entity.user.UserDetailsInfo;
  * 用户头像等url 进行url改装
  * 才能进行展示.
  */
+@Deprecated
 public class UrlHelper {
     private static final String HDSLB_HOST = "http://i2.hdslb.com";
 

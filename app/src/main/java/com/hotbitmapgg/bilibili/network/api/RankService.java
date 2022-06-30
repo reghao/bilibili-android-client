@@ -13,7 +13,7 @@ import rx.Observable;
  * <p>
  * 排行榜相关api
  */
-
+@Deprecated
 public interface RankService {
 
     /**

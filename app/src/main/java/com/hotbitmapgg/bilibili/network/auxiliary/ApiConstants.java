@@ -6,7 +6,7 @@ package com.hotbitmapgg.bilibili.network.auxiliary;
  * <p>
  * API常量类
  */
-
+@Deprecated
 public class ApiConstants {
     public static final String BILI_GO_BASE_URL = "http://bilibili-service.daoapp.io/";
     public static final String RANK_BASE_URL = "http://www.bilibili.com/";

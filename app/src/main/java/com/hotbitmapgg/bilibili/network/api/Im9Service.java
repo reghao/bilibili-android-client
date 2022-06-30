@@ -10,7 +10,7 @@ import rx.Observable;
  * Created by hcc on 2016/10/12 19:36
  * 100332338@qq.com
  */
-
+@Deprecated
 public interface Im9Service {
 
     /**

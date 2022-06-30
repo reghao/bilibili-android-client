@@ -37,6 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * <p/>
  * Retrofit帮助类
  */
+@Deprecated
 public class RetrofitHelper {
     private static OkHttpClient mOkHttpClient;
 

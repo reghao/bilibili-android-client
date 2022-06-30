@@ -14,6 +14,7 @@ import rx.Observable;
  * <p>
  * 直播相关api
  */
+@Deprecated
 public interface LiveService {
 
     /**

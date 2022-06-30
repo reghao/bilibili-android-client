@@ -14,6 +14,7 @@ import rx.Observable;
  * <p>
  * bilibili-go相关api
  */
+@Deprecated
 public interface BiliGoService {
 
     /**

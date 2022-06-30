@@ -17,7 +17,7 @@ import rx.Observable;
  * <p>
  * 番剧相关api
  */
-
+@Deprecated
 public interface BangumiService {
 
     /**

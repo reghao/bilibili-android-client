@@ -14,7 +14,7 @@ import rx.Observable;
  * <p>
  * 用户相关api
  */
-
+@Deprecated
 public interface UserService {
 
     /**

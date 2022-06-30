@@ -19,6 +19,7 @@ import rx.Observable;
  * Created by hcc on 16/8/4 12:03
  * 100332338@qq.com
  */
+@Deprecated
 public interface BiliAppService {
 
     /**

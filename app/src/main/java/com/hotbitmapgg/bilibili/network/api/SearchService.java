@@ -11,7 +11,7 @@ import rx.Observable;
  * <p>
  * 搜索相关api
  */
-
+@Deprecated
 public interface SearchService {
 
     /**

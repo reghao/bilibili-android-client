@@ -12,6 +12,7 @@ import rx.Observable;
  * <p>
  * 用户个人账号相关api
  */
+@Deprecated
 public interface AccountService {
 
     /**
