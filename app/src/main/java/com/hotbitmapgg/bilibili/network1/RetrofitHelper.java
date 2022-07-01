@@ -33,7 +33,7 @@ public class RetrofitHelper {
     }
 
     public static BiliPlayService biliPlayService() {
-        return createApi(BiliPlayService.class, BiliApi.baseFileUrl);
+        return createApi(BiliPlayService.class, BiliApi.baseApiUrl);
     }
 
     public static BiliUserService biliUserService() {

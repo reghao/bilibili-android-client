@@ -18,8 +18,8 @@ public interface BiliPlayService {
      * quailty:清晰度(1~2，根据视频有不同)
      * type: 格式(mp4/flv)
      */
-    @GET("/video/{cid}")
-    Observable<HDVideoInfo> getHDVideoUrl(@Path("cid") int cid, @Query("quailty") int quailty, @Query("type") String type);
+    @GET("api/media/m/video/url/{cid}")
+    Observable<HDVideoInfo> getHDVideoUrl(@Path("cid") int cid, @Query("quality") int quality, @Query("type") String type);
 
     /**
      * 新番连载
