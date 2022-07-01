@@ -20,7 +20,7 @@ import com.hotbitmapgg.ohmybilibili.R;
 import com.hotbitmapgg.bilibili.adapter.section.HomeRecommendActivityCenterSection;
 import com.hotbitmapgg.bilibili.adapter.section.HomeRecommendPicSection;
 import com.hotbitmapgg.bilibili.entity.recommend.RecommendBannerInfo;
-import com.hotbitmapgg.bilibili.network.RetrofitHelper;
+import com.hotbitmapgg.bilibili.network1.RetrofitHelper;
 import com.hotbitmapgg.bilibili.utils.SnackbarUtil;
 
 import java.util.ArrayList;
@@ -117,17 +117,13 @@ public class HomeRecommendedFragment extends RxLazyFragment {
 
     @Override
     protected void loadData() {
-        RetrofitHelper.getBiliAppAPI()
-                .getRecommendedBannerInfo()
-                .compose(bindToLifecycle())
+        RetrofitHelper.biliVideoService().getRecommendedInfo()
+                /*.compose(bindToLifecycle())
                 .map(RecommendBannerInfo::getData)
-                .flatMap(new Func1<List<RecommendBannerInfo.DataBean>, Observable<RecommendInfo>>() {
-                    @Override
-                    public Observable<RecommendInfo> call(List<RecommendBannerInfo.DataBean> dataBeans) {
-                        recommendBanners.addAll(dataBeans);
-                        return RetrofitHelper.getBiliAppAPI().getRecommendedInfo();
-                    }
-                })
+                .flatMap((Func1<List<RecommendBannerInfo.DataBean>, Observable<RecommendInfo>>) dataBeans -> {
+                    recommendBanners.addAll(dataBeans);
+                    return RetrofitHelper.biliVideoService().getRecommendedInfo();
+                })*/
                 .compose(bindToLifecycle())
                 .map(RecommendInfo::getResult)
                 .subscribeOn(Schedulers.io())
@@ -145,8 +141,8 @@ public class HomeRecommendedFragment extends RxLazyFragment {
     private void convertBanner() {
         Observable.from(recommendBanners)
                 .compose(bindToLifecycle())
-                .forEach(dataBean -> banners.add(new BannerEntity(dataBean.getValue(),
-                        dataBean.getTitle(), dataBean.getImage())));
+                .forEach(dataBean -> banners.add(
+                        new BannerEntity(dataBean.getValue(), dataBean.getTitle(), dataBean.getImage())));
     }
 
 
@@ -157,39 +153,38 @@ public class HomeRecommendedFragment extends RxLazyFragment {
         hideEmptyView();
         convertBanner();
         mSectionedAdapter.addSection(new HomeRecommendBannerSection(banners));
-        int size = results.size();
-        for (int i = 0; i < size; i++) {
-            String type = results.get(i).getType();
+        for (RecommendInfo.ResultBean result : results) {
+            String type = result.getType();
             if (!TextUtils.isEmpty(type)) {
                 switch (type) {
                     case ConstantUtil.TYPE_TOPIC:
                         //话题
                         mSectionedAdapter.addSection(new HomeRecommendTopicSection(getActivity(),
-                                results.get(i).getBody().get(0).getCover(),
-                                results.get(i).getBody().get(0).getTitle(),
-                                results.get(i).getBody().get(0).getParam()));
+                                result.getBody().get(0).getCover(),
+                                result.getBody().get(0).getTitle(),
+                                result.getBody().get(0).getParam()));
                         break;
                     case ConstantUtil.TYPE_ACTIVITY_CENTER:
                         //活动中心
                         mSectionedAdapter.addSection(new HomeRecommendActivityCenterSection(
                                 getActivity(),
-                                results.get(i).getBody()));
+                                result.getBody()));
                         break;
                     default:
                         mSectionedAdapter.addSection(new HomeRecommendedSection(
                                 getActivity(),
-                                results.get(i).getHead().getTitle(),
-                                results.get(i).getType(),
-                                results.get(1).getHead().getCount(),
-                                results.get(i).getBody()));
+                                result.getHead().getTitle(),
+                                result.getType(),
+                                results.get(0).getHead().getCount(),
+                                result.getBody()));
                         break;
                 }
             }
-            String style = results.get(i).getHead().getStyle();
+            String style = result.getHead().getStyle();
             if (style.equals(ConstantUtil.STYLE_PIC)) {
                 mSectionedAdapter.addSection(new HomeRecommendPicSection(getActivity(),
-                        results.get(i).getBody().get(0).getCover(),
-                        results.get(i).getBody().get(0).getParam()));
+                        result.getBody().get(0).getCover(),
+                        result.getBody().get(0).getParam()));
             }
         }
         mSectionedAdapter.notifyDataSetChanged();
