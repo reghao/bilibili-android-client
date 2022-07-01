@@ -9,7 +9,7 @@ import com.squareup.leakcanary.LeakCanary;
  * Created by hcc on 16/8/7 21:18
  * 100332338@qq.com
  * <p/>
- * 哔哩哔哩动画App
+ * bili App
  */
 public class BilibiliApp extends Application {
 
