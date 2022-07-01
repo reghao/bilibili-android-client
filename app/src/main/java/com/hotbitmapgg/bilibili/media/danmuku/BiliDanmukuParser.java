@@ -3,6 +3,7 @@ package com.hotbitmapgg.bilibili.media.danmuku;
 import android.graphics.Color;
 import android.text.TextUtils;
 
+import master.flame.danmaku.danmaku.model.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.xml.sax.Attributes;
@@ -104,6 +105,7 @@ public class BiliDanmukuParser extends BaseDanmakuParser {
                     // int poolType = Integer.parseInt(values[5]); // 弹幕池类型 忽略
                     item = mContext.mDanmakuFactory.createDanmaku(type, mContext);
                     if (item != null) {
+                        item.flags = new GlobalFlagValues();
                         item.setTime(time);
                         item.textSize = textSize * (mDispDensity - 0.6f);
                         item.textColor = color;
