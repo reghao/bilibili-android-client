@@ -36,7 +36,7 @@ import com.hotbitmapgg.bilibili.utils.DisplayUtil;
 import com.hotbitmapgg.bilibili.utils.SystemBarHelper;
 import com.hotbitmapgg.ohmybilibili.R;
 import com.hotbitmapgg.bilibili.entity.video.VideoDetailsInfo;
-import com.hotbitmapgg.bilibili.network.RetrofitHelper;
+import com.hotbitmapgg.bilibili.network1.RetrofitHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,6 +124,17 @@ public class VideoDetailsActivity extends RxBaseActivity {
         });
     }
 
+    /**
+     * 进入视频详情页自动播放视频
+     *
+     * @param
+     * @return
+     * @date 2022-07-01 下午4:19
+     */
+    private void autoPlay(VideoDetailsInfo.DataBean mVideoDetailsInfo) {
+        VideoPlayerActivity.launch(VideoDetailsActivity.this,
+                mVideoDetailsInfo.getPages().get(0).getCid(), mVideoDetailsInfo.getTitle());
+    }
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -191,8 +202,7 @@ public class VideoDetailsActivity extends RxBaseActivity {
 
     @Override
     public void loadData() {
-        RetrofitHelper.getBiliAppAPI()
-                .getVideoDetails(av)
+        RetrofitHelper.biliVideoService().getVideoDetail(av)
                 .compose(this.bindToLifecycle())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -205,7 +215,6 @@ public class VideoDetailsActivity extends RxBaseActivity {
                             getResources().getColor(R.color.gray_20)));
                 });
     }
-
 
     @Override
     public void finishTask() {
@@ -227,6 +236,8 @@ public class VideoDetailsActivity extends RxBaseActivity {
         fragments.add(mVideoIntroductionFragment);
         fragments.add(mVideoCommentFragment);
         setPagerTitle(String.valueOf(mVideoDetailsInfo.getStat().getReply()));
+
+        //autoPlay(mVideoDetailsInfo);
     }
 
     private void setPagerTitle(String num) {
