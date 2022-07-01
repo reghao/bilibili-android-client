@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.hotbitmapgg.bilibili.adapter.VideoRelatedAdapter;
 import com.hotbitmapgg.bilibili.base.RxLazyFragment;
 import com.hotbitmapgg.bilibili.entity.video.VideoDetailsInfo;
-import com.hotbitmapgg.bilibili.network.RetrofitHelper;
+import com.hotbitmapgg.bilibili.network1.RetrofitHelper;
 import com.hotbitmapgg.bilibili.utils.ConstantUtil;
 import com.hotbitmapgg.bilibili.utils.NumberUtil;
 import com.hotbitmapgg.bilibili.widget.UserTagView;
@@ -82,8 +82,7 @@ public class VideoIntroductionFragment extends RxLazyFragment {
 
     @Override
     protected void loadData() {
-        RetrofitHelper.getBiliAppAPI()
-                .getVideoDetails(av)
+        RetrofitHelper.biliVideoService().getVideoDetail(av)
                 .compose(this.bindToLifecycle())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -150,7 +149,7 @@ public class VideoIntroductionFragment extends RxLazyFragment {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
-        intent.putExtra(Intent.EXTRA_TEXT, "来自「哔哩哔哩」的分享:" + mVideoDetailsInfo.getDesc());
+        intent.putExtra(Intent.EXTRA_TEXT, "来自「bili」的分享:" + mVideoDetailsInfo.getDesc());
         startActivity(Intent.createChooser(intent, mVideoDetailsInfo.getTitle()));
     }
 }
