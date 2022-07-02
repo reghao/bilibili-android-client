@@ -22,7 +22,7 @@ import com.hotbitmapgg.bilibili.module.user.UserInfoDetailsActivity;
 import com.hotbitmapgg.bilibili.network.RetrofitHelper;
 import com.hotbitmapgg.bilibili.utils.ConstantUtil;
 import com.hotbitmapgg.bilibili.utils.LogUtil;
-import com.hotbitmapgg.bilibili.widget.CircleImageView;
+import com.hotbitmapgg.bilibili.widget.CircleAvatarView;
 import com.hotbitmapgg.bilibili.widget.livelike.LoveLikeLayout;
 import com.hotbitmapgg.ohmybilibili.R;
 
@@ -61,7 +61,7 @@ public class LivePlayerActivity extends RxBaseActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.user_pic)
-    CircleImageView mUserPic;
+    CircleAvatarView mUserPic;
     @BindView(R.id.user_name)
     TextView mUserName;
     @BindView(R.id.live_num)

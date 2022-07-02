@@ -14,7 +14,7 @@ import com.hotbitmapgg.bilibili.adapter.helper.AbsRecyclerViewAdapter;
 import com.hotbitmapgg.bilibili.entity.attention.AttentionDynamicInfo;
 import com.hotbitmapgg.bilibili.utils.NumberUtil;
 import com.hotbitmapgg.bilibili.utils.WeekDayUtil;
-import com.hotbitmapgg.bilibili.widget.CircleImageView;
+import com.hotbitmapgg.bilibili.widget.CircleAvatarView;
 import com.hotbitmapgg.ohmybilibili.R;
 
 import java.util.List;
@@ -86,7 +86,7 @@ public class AttentionDynamicAdapter extends AbsRecyclerViewAdapter {
 
     private class ItemViewHolder extends AbsRecyclerViewAdapter.ClickableViewHolder {
 
-        CircleImageView mAvatar;
+        CircleAvatarView mAvatar;
         TextView mName;
         TextView mUpdateTime;
         ImageView mImage;

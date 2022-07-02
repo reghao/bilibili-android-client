@@ -47,7 +47,6 @@
                 android:textColor="@color/black_alpha_45"
                 android:textSize="@dimen/default_small_text_size" />
 
-
             <ImageView
                 android:id="@+id/search_img"
                 android:layout_width="wrap_content"
@@ -57,10 +56,7 @@
                 android:padding="@dimen/default_general_margin"
                 android:src="@drawable/ic_scan"
                 android:tint="@color/gray_20" />
-
-
         </android.support.v7.widget.CardView>
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,14 +74,12 @@
             android:layout_marginStart="@dimen/default_tiny_padding"
             app:max_select="-1" />
 
-
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/hide_scroll_view"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:overScrollMode="never"
             android:visibility="gone">
-
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/hide_tags_layout"
@@ -94,9 +88,7 @@
                 android:layout_marginEnd="@dimen/default_tiny_padding"
                 android:layout_marginStart="@dimen/default_tiny_padding"
                 app:max_select="-1" />
-
         </android.support.v4.widget.NestedScrollView>
-
 
         <LinearLayout
             android:id="@+id/more_layout"
@@ -113,7 +105,6 @@
                 android:layout_marginStart="@dimen/default_long_margin"
                 android:layout_weight="1"
                 android:background="@color/gray_light" />
-
             <TextView
                 android:id="@+id/tv_more"
                 android:layout_width="wrap_content"
@@ -126,15 +117,12 @@
                 android:text="@string/look_more"
                 android:textColor="@color/font_normal"
                 android:textSize="@dimen/default_tiny_text_size" />
-
             <View
                 android:layout_width="@dimen/app_bar_default_elevation"
                 android:layout_height="@dimen/line_height"
                 android:layout_marginEnd="@dimen/default_long_margin"
                 android:layout_weight="1"
                 android:background="@color/gray_light" />
-
-
         </LinearLayout>
 
 

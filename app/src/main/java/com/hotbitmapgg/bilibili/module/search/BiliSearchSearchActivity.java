@@ -3,13 +3,11 @@ package com.hotbitmapgg.bilibili.module.search;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -19,7 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.OnClick;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.hotbitmapgg.bilibili.base.RxBaseActivity;
 import com.hotbitmapgg.bilibili.entity.discover.HotSearchTag;
@@ -32,13 +31,6 @@ import com.hotbitmapgg.bilibili.widget.NoScrollViewPager;
 import com.hotbitmapgg.ohmybilibili.R;
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.widget.RxTextView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -47,13 +39,17 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by hcc on 16/8/29 19:58
  * 100332338@qq.com
  * <p/>
  * 全站搜索界面
  */
-public class TotalStationSearchActivity extends RxBaseActivity {
+public class BiliSearchSearchActivity extends RxBaseActivity {
     /*@BindView(R.id.hide_scroll_view)
     NestedScrollView mScrollView;*/
 
@@ -140,9 +136,9 @@ public class TotalStationSearchActivity extends RxBaseActivity {
         mTagFlowLayout.setAdapter(new TagAdapter<HotSearchTag.ListBean>(frontTags) {
             @Override
             public View getView(FlowLayout parent, int position, HotSearchTag.ListBean listBean) {
-                TextView mTags = (TextView) LayoutInflater.from(TotalStationSearchActivity.this).inflate(R.layout.layout_tags_item, parent, false);
+                TextView mTags = (TextView) LayoutInflater.from(BiliSearchSearchActivity.this).inflate(R.layout.layout_tags_item, parent, false);
                 mTags.setText(listBean.getKeyword());
-                mTags.setOnClickListener(v -> TotalStationSearchActivity.launch(TotalStationSearchActivity.this, listBean.getKeyword()));
+                mTags.setOnClickListener(v -> BiliSearchSearchActivity.launch(BiliSearchSearchActivity.this, listBean.getKeyword()));
                 return mTags;
             }
         });
@@ -207,7 +203,7 @@ public class TotalStationSearchActivity extends RxBaseActivity {
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s -> {
-                    KeyBoardUtil.closeKeybord(mSearchEdit, TotalStationSearchActivity.this);
+                    KeyBoardUtil.closeKeybord(mSearchEdit, BiliSearchSearchActivity.this);
                     showSearchAnim();
                     clearData();
                     content = s;
@@ -222,7 +218,7 @@ public class TotalStationSearchActivity extends RxBaseActivity {
                 .filter(s -> !TextUtils.isEmpty(s))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s -> {
-                    KeyBoardUtil.closeKeybord(mSearchEdit, TotalStationSearchActivity.this);
+                    KeyBoardUtil.closeKeybord(mSearchEdit, BiliSearchSearchActivity.this);
                     showSearchAnim();
                     clearData();
                     content = s;
@@ -345,7 +341,7 @@ public class TotalStationSearchActivity extends RxBaseActivity {
 
 
     public static void launch(Activity activity, String str) {
-        Intent mIntent = new Intent(activity, TotalStationSearchActivity.class);
+        Intent mIntent = new Intent(activity, BiliSearchSearchActivity.class);
         mIntent.putExtra(ConstantUtil.EXTRA_CONTENT, str);
         activity.startActivity(mIntent);
     }

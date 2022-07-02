@@ -25,7 +25,7 @@ import com.hotbitmapgg.ohmybilibili.R;
  * 用户Tag自定义View
  */
 public class UserTagView extends FrameLayout {
-    private CircleImageView avatarView;
+    private CircleAvatarView avatarView;
     private TextView userNameText;
     private OnClickListener onClickListener;
     private Activity activity;
@@ -46,7 +46,7 @@ public class UserTagView extends FrameLayout {
         @SuppressLint("InflateParams")
         LinearLayout cardView = (LinearLayout) LayoutInflater.from(context)
                 .inflate(R.layout.layout_user_tag_view, null);
-        avatarView = (CircleImageView) cardView.findViewById(R.id.user_avatar);
+        avatarView = (CircleAvatarView) cardView.findViewById(R.id.user_avatar);
         userNameText = (TextView) cardView.findViewById(R.id.user_name);
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 getResources().getDimensionPixelSize(R.dimen.user_tag_view_height));
@@ -72,7 +72,7 @@ public class UserTagView extends FrameLayout {
         avatarView.setImageResource(id);
     }
 
-    public CircleImageView getAvatarView() {
+    public CircleAvatarView getAvatarView() {
         return this.avatarView;
     }
 

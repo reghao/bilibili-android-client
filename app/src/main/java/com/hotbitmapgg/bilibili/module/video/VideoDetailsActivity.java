@@ -231,6 +231,7 @@ public class VideoDetailsActivity extends RxBaseActivity {
                     .dontAnimate()
                     .into(mVideoPreview);
         }
+
         VideoIntroductionFragment mVideoIntroductionFragment = VideoIntroductionFragment.newInstance(av);
         VideoCommentFragment mVideoCommentFragment = VideoCommentFragment.newInstance(av);
         fragments.add(mVideoIntroductionFragment);

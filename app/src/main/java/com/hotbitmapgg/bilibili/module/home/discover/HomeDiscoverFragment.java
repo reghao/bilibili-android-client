@@ -35,11 +35,13 @@ import rx.schedulers.Schedulers;
  * <p/>
  * 首页发现界面
  */
+@Deprecated
 public class HomeDiscoverFragment extends RxLazyFragment {
-    @BindView(R.id.tags_layout)
-    TagFlowLayout mTagFlowLayout;
     @BindView(R.id.hide_scroll_view)
     NestedScrollView mScrollView;
+
+    @BindView(R.id.tags_layout)
+    TagFlowLayout mTagFlowLayout;
     @BindView(R.id.hide_tags_layout)
     TagFlowLayout mHideTagLayout;
     @BindView(R.id.more_layout)
@@ -59,7 +61,6 @@ public class HomeDiscoverFragment extends RxLazyFragment {
     public int getLayoutResId() {
         return R.layout.fragment_discover;
     }
-
 
     @Override
     public void finishCreateView(Bundle state) {

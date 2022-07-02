@@ -14,7 +14,7 @@ import com.hotbitmapgg.bilibili.adapter.helper.AbsRecyclerViewAdapter;
 import com.hotbitmapgg.bilibili.entity.video.VideoCommentInfo;
 import com.hotbitmapgg.bilibili.network.auxiliary.UrlHelper;
 import com.hotbitmapgg.bilibili.utils.DateUtil;
-import com.hotbitmapgg.bilibili.widget.CircleImageView;
+import com.hotbitmapgg.bilibili.widget.CircleAvatarView;
 import com.hotbitmapgg.ohmybilibili.R;
 
 import java.util.List;
@@ -117,7 +117,7 @@ public class VideoHotCommentAdapter extends AbsRecyclerViewAdapter {
 
     public class ItemViewHolder extends ClickableViewHolder {
 
-        CircleImageView mUserAvatar;
+        CircleAvatarView mUserAvatar;
         TextView mUserName;
         ImageView mUserLv;
         ImageView mUserSex;

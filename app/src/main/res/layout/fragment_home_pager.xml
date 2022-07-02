@@ -24,21 +24,19 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-
                 <LinearLayout
                     android:id="@+id/navigation_layout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_drawer_home" />
 
-                    <com.hotbitmapgg.bilibili.widget.CircleImageView
+                    <com.hotbitmapgg.bilibili.widget.CircleAvatarView
                         android:id="@+id/toolbar_user_avatar"
                         android:layout_width="@dimen/circle_user_small_size"
                         android:layout_height="@dimen/circle_user_small_size"
@@ -48,20 +46,51 @@
                         app:border_color="@color/white"
                         app:border_width="@dimen/circle_default_width" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/default_general_margin"
-                        android:maxLines="1"
-                        android:text="@string/hotbitmapgg"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/default_medium_text_size" />
+                    <android.support.v7.widget.CardView
+                            android:id="@+id/card_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/discover_card_view_height"
+                            android:layout_marginLeft="@dimen/default_general_margin"
+                            android:layout_marginRight="@dimen/default_general_margin"
+                            android:layout_marginTop="@dimen/default_general_margin"
+                            app:cardBackgroundColor="@color/card_view_background"
+                            app:cardCornerRadius="@dimen/line_height"
+                            app:cardElevation="@dimen/app_bar_default_elevation">
 
+                        <ImageView
+                                android:id="@+id/search_scan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|start"
+                                android:layout_marginStart="@dimen/default_general_margin"
+                                android:src="@drawable/ic_hint_search"
+                                android:tint="@color/gray_20" />
+
+                        <TextView
+                                android:id="@+id/search_edit"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center|end"
+                                android:layout_marginStart="@dimen/discover_text_margin"
+                                android:background="@color/card_view_background"
+                                android:gravity="center_vertical"
+                                android:maxLines="1"
+                                android:text="@string/discover_search_hint"
+                                android:textColor="@color/black_alpha_45"
+                                android:textSize="@dimen/default_small_text_size" />
+
+                        <ImageView
+                                android:id="@+id/search_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|end"
+                                android:clickable="true"
+                                android:padding="@dimen/default_general_margin"
+                                android:src="@drawable/ic_scan"
+                                android:tint="@color/gray_20" />
+                    </android.support.v7.widget.CardView>
                 </LinearLayout>
-
-
             </android.support.v7.widget.Toolbar>
-
 
             <com.flyco.tablayout.SlidingTabLayout
                 android:id="@+id/sliding_tabs"
@@ -74,30 +103,18 @@
                 app:tl_indicator_height="@dimen/tab_indicator_small_height"
                 app:tl_indicator_width="@dimen/tab_indicator_long_width"
                 app:tl_tab_space_equal="true" />
-
-
         </android.support.design.widget.AppBarLayout>
-
 
         <com.hotbitmapgg.bilibili.widget.NoScrollViewPager
             android:id="@+id/view_pager"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:overScrollMode="never"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-
     </android.support.design.widget.CoordinatorLayout>
 
     <com.miguelcatalan.materialsearchview.MaterialSearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-
 </FrameLayout>
-
-
-
-
-

@@ -27,7 +27,7 @@ import com.hotbitmapgg.bilibili.module.home.HomePageFragment;
 import com.hotbitmapgg.bilibili.utils.ConstantUtil;
 import com.hotbitmapgg.bilibili.utils.PreferenceUtil;
 import com.hotbitmapgg.bilibili.utils.ToastUtil;
-import com.hotbitmapgg.bilibili.widget.CircleImageView;
+import com.hotbitmapgg.bilibili.widget.CircleAvatarView;
 import com.hotbitmapgg.ohmybilibili.R;
 
 import butterknife.BindView;
@@ -55,7 +55,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         return R.layout.activity_main;
     }
 
-
     @Override
     public void initViews(Bundle savedInstanceState) {
         //初始化Fragment
@@ -63,7 +62,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         //初始化侧滑菜单
         initNavigationView();
     }
-
 
     /**
      * 初始化Fragments
@@ -90,17 +88,20 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
                 .show(mHomePageFragment).commit();
     }
 
-
     /**
-     * 初始化NavigationView
+     * 初始化左侧导航栏(NavigationView)
+     *
+     * @param
+     * @return
+     * @date 2022-07-02 上午1:53
      */
     private void initNavigationView() {
         mNavigationView.setNavigationItemSelectedListener(this);
         View headerView = mNavigationView.getHeaderView(0);
-        CircleImageView mUserAvatarView = (CircleImageView) headerView.findViewById(R.id.user_avatar_view);
-        TextView mUserName = (TextView) headerView.findViewById(R.id.user_name);
-        TextView mUserSign = (TextView) headerView.findViewById(R.id.user_other_info);
-        ImageView mSwitchMode = (ImageView) headerView.findViewById(R.id.iv_head_switch_mode);
+        CircleAvatarView mUserAvatarView = headerView.findViewById(R.id.user_avatar_view);
+        TextView mUserName = headerView.findViewById(R.id.user_name);
+        TextView mUserSign = headerView.findViewById(R.id.user_other_info);
+        ImageView mSwitchMode = headerView.findViewById(R.id.iv_head_switch_mode);
         //设置头像
         mUserAvatarView.setImageResource(R.drawable.ic_hotbitmapgg_avatar);
         //设置用户名 签名
@@ -115,7 +116,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
             mSwitchMode.setImageResource(R.drawable.ic_switch_night);
         }
     }
-
 
     /**
      * 日夜间模式切换
@@ -133,7 +133,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         }
         recreate();
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -181,7 +180,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         return false;
     }
 
-
     /**
      * Fragment切换
      */
@@ -195,7 +193,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         currentTabIndex = index;
     }
 
-
     /**
      * 切换Fragment的下标
      */
@@ -204,7 +201,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         switchFragment();
         item.setChecked(true);
     }
-
 
     /**
      * DrawerLayout侧滑菜单开关
@@ -217,7 +213,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         }
     }
 
-
     /**
      * 监听back键处理DrawerLayout和SearchView
      */
@@ -228,11 +223,11 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
                 mDrawerLayout.closeDrawers();
             } else {
                 if (mHomePageFragment != null) {
-                    if (mHomePageFragment.isOpenSearchView()) {
+                    /*if (mHomePageFragment.isOpenSearchView()) {
                         mHomePageFragment.closeSearchView();
                     } else {
                         exitApp();
-                    }
+                    }*/
                 } else {
                     exitApp();
                 }
@@ -240,7 +235,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         }
         return true;
     }
-
 
     /**
      * 双击退出App
@@ -255,15 +249,13 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         }
     }
 
-
     /**
      * 解决App重启后导致Fragment重叠的问题
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        //super.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
-
 
     @Override
     public void initToolBar() {

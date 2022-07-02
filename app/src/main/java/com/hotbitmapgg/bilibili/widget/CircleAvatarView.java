@@ -28,7 +28,7 @@ import com.hotbitmapgg.ohmybilibili.R;
  * <p/>
  * 圆形头像
  */
-public class CircleImageView extends ImageView {
+public class CircleAvatarView extends ImageView {
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
     private static final int COLORDRAWABLE_DIMENSION = 2;
@@ -53,16 +53,16 @@ public class CircleImageView extends ImageView {
     private boolean mSetupPending;
     private boolean mBorderOverlay;
 
-    public CircleImageView(Context context) {
+    public CircleAvatarView(Context context) {
         super(context);
         init();
     }
 
-    public CircleImageView(Context context, AttributeSet attrs) {
+    public CircleAvatarView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
+    public CircleAvatarView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyle, 0);
         mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_border_width, DEFAULT_BORDER_WIDTH);

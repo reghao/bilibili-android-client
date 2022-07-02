@@ -12,13 +12,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.hotbitmapgg.bilibili.adapter.pager.HomePagerAdapter;
+import com.hotbitmapgg.bilibili.adapter.pager.HomeSlidingPagerAdapter;
 import com.hotbitmapgg.bilibili.base.RxLazyFragment;
 import com.hotbitmapgg.bilibili.module.common.MainActivity;
 import com.hotbitmapgg.bilibili.module.entry.GameCentreActivity;
 import com.hotbitmapgg.bilibili.module.entry.OffLineDownloadActivity;
 import com.hotbitmapgg.bilibili.module.search.TotalStationSearchActivity;
-import com.hotbitmapgg.bilibili.widget.CircleImageView;
+import com.hotbitmapgg.bilibili.widget.CircleAvatarView;
 import com.hotbitmapgg.ohmybilibili.R;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
@@ -43,7 +43,7 @@ public class HomePageFragment extends RxLazyFragment {
     @BindView(R.id.search_view)
     MaterialSearchView mSearchView;
     @BindView(R.id.toolbar_user_avatar)
-    CircleImageView mCircleImageView;
+    CircleAvatarView mCircleAvatarView;
 
     public static HomePageFragment newInstance() {
         return new HomePageFragment();
@@ -58,17 +58,17 @@ public class HomePageFragment extends RxLazyFragment {
     public void finishCreateView(Bundle state) {
         setHasOptionsMenu(true);
         initToolBar();
-        initSearchView();
+        //initSearchView();
         initViewPager();
     }
 
     private void initToolBar() {
         mToolbar.setTitle("");
         ((MainActivity) getActivity()).setSupportActionBar(mToolbar);
-        mCircleImageView.setImageResource(R.drawable.ic_hotbitmapgg_avatar);
+        mCircleAvatarView.setImageResource(R.drawable.ic_hotbitmapgg_avatar);
     }
 
-    private void initSearchView() {
+    /*private void initSearchView() {
         //初始化SearchBar
         mSearchView.setVoiceSearch(false);
         mSearchView.setCursorDrawable(R.drawable.custom_cursor);
@@ -86,10 +86,10 @@ public class HomePageFragment extends RxLazyFragment {
                 return false;
             }
         });
-    }
+    }*/
 
     private void initViewPager() {
-        HomePagerAdapter mHomeAdapter = new HomePagerAdapter(getChildFragmentManager(), getApplicationContext());
+        HomeSlidingPagerAdapter mHomeAdapter = new HomeSlidingPagerAdapter(getChildFragmentManager(), getApplicationContext());
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setAdapter(mHomeAdapter);
         mSlidingTab.setViewPager(mViewPager);
@@ -100,7 +100,6 @@ public class HomePageFragment extends RxLazyFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
         inflater.inflate(R.menu.menu_main, menu);
-        // 设置SearchViewItemMenu
         MenuItem item = menu.findItem(R.id.id_action_search);
         mSearchView.setMenuItem(item);
     }
@@ -109,10 +108,6 @@ public class HomePageFragment extends RxLazyFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.id_action_game:
-                //游戏中心
-                startActivity(new Intent(getActivity(), GameCentreActivity.class));
-                break;
             case R.id.id_action_download:
                 //离线缓存
                 startActivity(new Intent(getActivity(), OffLineDownloadActivity.class));
@@ -137,7 +132,7 @@ public class HomePageFragment extends RxLazyFragment {
             if (matches != null && matches.size() > 0) {
                 String searchWrd = matches.get(0);
                 if (!TextUtils.isEmpty(searchWrd)) {
-                    mSearchView.setQuery(searchWrd, false);
+                    //mSearchView.setQuery(searchWrd, false);
                 }
             }
             return;
@@ -146,12 +141,20 @@ public class HomePageFragment extends RxLazyFragment {
     }
 
 
-    public boolean isOpenSearchView() {
+    /*public boolean isOpenSearchView() {
         return mSearchView.isSearchOpen();
     }
 
 
     public void closeSearchView() {
         mSearchView.closeSearch();
+    }*/
+
+    /**
+     * 前往搜索界面
+     */
+    @OnClick(R.id.card_view)
+    void startSearchActivity() {
+        startActivity(new Intent(getActivity(), TotalStationSearchActivity.class));
     }
 }

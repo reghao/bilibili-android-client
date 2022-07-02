@@ -181,7 +181,7 @@
                     </LinearLayout>
 
 
-                    <com.hotbitmapgg.bilibili.widget.CircleImageView
+                    <com.hotbitmapgg.bilibili.widget.CircleAvatarView
                         android:id="@+id/user_avatar_view"
                         android:layout_width="@dimen/user_info_avatar_size"
                         android:layout_height="@dimen/user_info_avatar_size"

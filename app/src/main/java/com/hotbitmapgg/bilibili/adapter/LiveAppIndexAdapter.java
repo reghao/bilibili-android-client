@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hotbitmapgg.bilibili.entity.live.LiveAppIndexInfo;
 import com.hotbitmapgg.bilibili.module.home.live.LivePlayerActivity;
-import com.hotbitmapgg.bilibili.widget.CircleImageView;
+import com.hotbitmapgg.bilibili.widget.CircleAvatarView;
 import com.hotbitmapgg.bilibili.widget.banner.BannerEntity;
 import com.hotbitmapgg.bilibili.widget.banner.BannerView;
 import com.hotbitmapgg.ohmybilibili.R;
@@ -278,7 +278,7 @@ public class LiveAppIndexAdapter extends RecyclerView.Adapter {
         @BindView(R.id.item_live_title)
         TextView itemLiveTitle;
         @BindView(R.id.item_live_user_cover)
-        CircleImageView itemLiveUserCover;
+        CircleAvatarView itemLiveUserCover;
         @BindView(R.id.item_live_count)
         TextView itemLiveCount;
         @BindView(R.id.item_live_layout)

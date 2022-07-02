@@ -35,7 +35,7 @@ import com.hotbitmapgg.bilibili.utils.LogUtil;
 import com.hotbitmapgg.bilibili.utils.NumberUtil;
 import com.hotbitmapgg.bilibili.utils.SystemBarHelper;
 import com.hotbitmapgg.bilibili.utils.ToastUtil;
-import com.hotbitmapgg.bilibili.widget.CircleImageView;
+import com.hotbitmapgg.bilibili.widget.CircleAvatarView;
 import com.hotbitmapgg.bilibili.widget.CircleProgressView;
 import com.hotbitmapgg.bilibili.widget.NoScrollViewPager;
 import com.hotbitmapgg.ohmybilibili.R;
@@ -58,7 +58,7 @@ import rx.schedulers.Schedulers;
  */
 public class UserInfoDetailsActivity extends RxBaseActivity {
     @BindView(R.id.user_avatar_view)
-    CircleImageView mAvatarImage;
+    CircleAvatarView mAvatarImage;
     @BindView(R.id.user_name)
     TextView mUserNameText;
     @BindView(R.id.user_desc)

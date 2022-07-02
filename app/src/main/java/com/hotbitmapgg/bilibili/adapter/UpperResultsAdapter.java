@@ -12,7 +12,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hotbitmapgg.bilibili.adapter.helper.AbsRecyclerViewAdapter;
 import com.hotbitmapgg.bilibili.entity.search.SearchUpperInfo;
 import com.hotbitmapgg.bilibili.utils.NumberUtil;
-import com.hotbitmapgg.bilibili.widget.CircleImageView;
+import com.hotbitmapgg.bilibili.widget.CircleAvatarView;
 import com.hotbitmapgg.ohmybilibili.R;
 
 import java.util.List;
@@ -73,7 +73,7 @@ public class UpperResultsAdapter extends AbsRecyclerViewAdapter {
 
     public class ItemViewHolder extends ClickableViewHolder {
 
-        CircleImageView mUserAvatar;
+        CircleAvatarView mUserAvatar;
         TextView mUserName;
         TextView mUserFans;
         TextView mUserVideos;

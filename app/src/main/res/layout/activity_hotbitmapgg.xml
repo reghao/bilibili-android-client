@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
 
-            <com.hotbitmapgg.bilibili.widget.CircleImageView
+            <com.hotbitmapgg.bilibili.widget.CircleAvatarView
                 android:layout_width="@dimen/circle_default_size"
                 android:layout_height="@dimen/circle_default_size"
                 android:layout_marginTop="@dimen/circle_margin_top"
